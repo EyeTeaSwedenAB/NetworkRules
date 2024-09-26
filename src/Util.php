@@ -177,6 +177,10 @@ class Util
         }
         [$network, $mask] = explode('/', $value);
 
+        if (!is_numeric($mask)) {
+            return false;
+        }
+
         return self::validIPv4Address($network) && self::validRange($mask, $low, $high);
     }
 
@@ -190,6 +194,10 @@ class Util
             return false;
         }
         [$network, $mask] = explode('/', $value);
+
+        if (!is_numeric($mask)) {
+            return false;
+        }
 
         return self::validIPv6Address($network) && self::validRange($mask, $low, $high);
     }
@@ -205,6 +213,10 @@ class Util
         }
 
         [$network, $mask] = explode('/', $value);
+
+        if (!is_numeric($mask)) {
+            return false;
+        }
 
         if (!self::validIPv6Address($network)) {
             $high = min($high, self::IPV4_RANGE_MAX);
