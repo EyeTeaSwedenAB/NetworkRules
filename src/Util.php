@@ -17,7 +17,7 @@ class Util
             $value,
             FILTER_VALIDATE_INT,
             ["options" => ["min_range" => $low, "max_range" => $high]]
-        );
+        ) !== false;
     }
 
     public static function validIPv4Address(string $value): bool
